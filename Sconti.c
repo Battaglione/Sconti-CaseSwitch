@@ -1,53 +1,55 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main()
-{
-    float PrezzoTot, Sconto;
+int main (){
+    float PrezzoFin, Sconto, Prezzo;
     int SelSconto;
-    do
-    {
-    printf("Inserire la spesa totale: \n");
-    printf(">");
-    scanf("%d",&PrezzoTot);
+    
+    Prezzo = 0;
 
-    }while(PrezzoTot < 0);
-    if(PrezzoTot < 50){
+    do{
+        printf("Inserire il prezzo del prodotto:\n");
+        scanf("%f", &Prezzo);
+    }while(Prezzo <= 0);
+
+    if(Prezzo >= 50){
         SelSconto = 1;
     }
-    else{
-        if(PrezzoTot < 65){
-            SelSconto = 2;
-        }
+    if(Prezzo >= 65){
+        SelSconto = 2;
     }
-    if(PrezzoTot < 80){
+    if(Prezzo >= 70){
         SelSconto = 3;
-        }
-    else{
-        if(PrezzoTot >= 100){
-            SelSconto = 3;
-        }
     }
-    switch (PrezzoTot){
-        case 0:
-            printf("Nessuno Sconto Applicato");
-            break;
+    if(Prezzo >= 100){
+        SelSconto = 4;
+    }
+
+    printf("%d\n", SelSconto);
+
+    switch(SelSconto){
         case 1:
-            Sconto = PrezzoTot - 5%;
-            printf("Il prezzo finale e' %d", Sconto);
-            break;
+        Sconto = 0.05;
+        PrezzoFin = Prezzo -  (Prezzo * Sconto);
+        printf("Il prezzo finale e' %.2f\n", PrezzoFin);
+        break;
+
         case 2:
-            Sconto = PrezzoTot - 6%;
-            printf("Il prezzo finale e' %d", Sconto);
-            break;
+        Sconto = 0.06;
+        PrezzoFin = Prezzo - Sconto;
+        printf("Il prezzo finale e' %.2f\n", PrezzoFin);
+        break;
+
         case 3:
-            Sconto = PrezzoTot - 7%;
-            printf("Il prezzo finale e' %d", Sconto);
-            break;
+        Sconto = 0.07;
+        PrezzoFin = Prezzo -  (Prezzo * Sconto);
+        printf("Il prezzo finale e' %.2f\n", PrezzoFin);
+        break;
+
         case 4:
-            Sconto = PrezzoTot - 10%;
-            printf("Il prezzo finale e' %d", Sconto);
-            break;
+        Sconto = 0.1;
+        PrezzoFin = Prezzo -  (Prezzo * Sconto);
+        printf("Il prezzo finale e' %.2f\n", PrezzoFin);
+        break;
     }
     return 0;
 }
